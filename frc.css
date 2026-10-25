@@ -1,0 +1,534 @@
+/* Colors and shared settings */
+:root {
+    --paper: #f7f5f0;
+    --ink: #252923;
+    --muted: #64695f;
+    --accent: #ad4628;
+    --blue: #17608c;
+    --blue-light: #e5edf2;
+    --line: #d8d9ce;
+    --surface: #eeece5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.8;
+}
+
+h1,
+h2,
+h3,
+p,
+figure {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 5px;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.wrap {
+    width: min(1120px, calc(100% - 48px));
+    margin-inline: auto;
+}
+
+/* Accessibility */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    z-index: 30;
+    padding: 12px;
+    background: var(--ink);
+    color: white;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+/* Header and navigation */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 31px;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.site-nav {
+    display: flex;
+    gap: 25px;
+    font-size: 13px;
+}
+
+.site-nav a:hover {
+    color: var(--accent);
+}
+
+/* Hero */
+.hero {
+    padding-block: 35px 65px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 45px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.eyebrow {
+    margin-bottom: 18px;
+    color: var(--muted);
+    font: 10px/1.7 "Courier New", monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+h1 {
+    max-width: 850px;
+    font-size: clamp(44px, 6.5vw, 78px);
+    line-height: 1.06;
+    font-weight: 500;
+    letter-spacing: -3px;
+}
+
+h1 em,
+h2 em {
+    color: var(--blue);
+    font-family: Georgia, serif;
+    font-weight: 400;
+}
+
+.lead {
+    max-width: 730px;
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 19px;
+    line-height: 1.75;
+}
+
+.hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-size: 12px;
+    transition: background 180ms, color 180ms;
+}
+
+.button:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.button.primary {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: white;
+}
+
+/* Season overview */
+.season-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--line);
+}
+
+.season-card {
+    padding: 30px;
+}
+
+.season-card + .season-card {
+    border-left: 1px solid var(--line);
+}
+
+.season-year {
+    color: var(--blue);
+    font: 12px "Courier New", monospace;
+    letter-spacing: 1px;
+}
+
+.season-card h2 {
+    margin-top: 12px;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+.season-card p {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.achievement {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 7px 11px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 11px;
+}
+
+/* Main layout */
+.content-layout {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 65px;
+    padding-top: 70px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 115px;
+    align-self: start;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.sidebar a:hover {
+    color: var(--blue);
+}
+
+.project-body {
+    min-width: 0;
+}
+
+/* Content sections */
+.section {
+    margin-bottom: 75px;
+}
+
+.section h2 {
+    margin-bottom: 25px;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.15;
+    font-weight: 500;
+    letter-spacing: -1.3px;
+}
+
+.section h3 {
+    margin: 28px 0 12px;
+    font-size: 21px;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+}
+
+.section > p:not(.eyebrow) {
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.role-label {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    color: var(--blue);
+    font-size: 11px;
+}
+
+/* Project photos */
+.photo {
+    margin-block: 30px;
+}
+
+.photo img {
+    max-height: 580px;
+    object-fit: contain;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+}
+
+figcaption {
+    margin-top: 11px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* Technical feature cards */
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-block: 28px;
+}
+
+.feature {
+    padding: 22px;
+    border: 1px solid var(--line);
+}
+
+.feature h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Highlighted result */
+.callout {
+    margin-block: 28px;
+    padding: 25px;
+    border-left: 3px solid var(--blue);
+    background: var(--blue-light);
+}
+
+.callout small {
+    color: var(--blue);
+    font: 10px "Courier New", monospace;
+    letter-spacing: 1px;
+}
+
+.callout p {
+    margin-top: 10px;
+    font: italic 25px/1.45 Georgia, serif;
+}
+
+/* Laterator illustration */
+.schematic {
+    margin-block: 30px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    background: white;
+}
+
+.schematic svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.schematic figcaption {
+    margin-top: 18px;
+}
+
+/* Contribution list */
+.work-list {
+    margin: 20px 0 28px;
+    padding: 0;
+    list-style: none;
+}
+
+.work-list li {
+    padding-block: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.work-list strong {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.work-list span {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Competition gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 28px;
+}
+
+.gallery img {
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    background: var(--surface);
+    object-fit: cover;
+}
+
+.gallery a {
+    display: block;
+}
+
+/* Resource links */
+.resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.section > p.small-note {
+    margin-top: 15px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* Footer */
+.page-end {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding-block: 35px;
+    border-top: 1px solid var(--line);
+}
+
+.page-end p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.page-end a {
+    color: var(--blue);
+    font-size: 13px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .content-layout {
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: 35px;
+    }
+}
+
+/* Phone */
+@media (max-width: 650px) {
+    .wrap {
+        width: calc(100% - 36px);
+    }
+
+    .header-inner {
+        min-height: 72px;
+    }
+
+    .site-nav {
+        gap: 16px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding-bottom: 40px;
+    }
+
+    h1 {
+        letter-spacing: -2px;
+    }
+
+    .lead {
+        font-size: 17px;
+    }
+
+    .season-overview,
+    .feature-grid,
+    .gallery,
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .season-card + .season-card {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .content-layout {
+        gap: 35px;
+        padding-top: 40px;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        font-size: 11px;
+    }
+
+    .section {
+        margin-bottom: 50px;
+    }
+
+    .schematic {
+        padding: 14px;
+    }
+
+    .page-end {
+        flex-wrap: wrap;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
