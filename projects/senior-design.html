@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#f7f5f0">
     <title>Thrust Vector Control | Kailash Gupta-Verma</title>
     <link rel="stylesheet" href="../project-pages.css">
+    <link rel="stylesheet" href="../tvc-progress.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -20,6 +21,7 @@
             <a class="back-link" href="../index.html#work">← All projects</a>
             <p class="eyebrow">Senior design · WashU</p>
             <h1>Thrust Vector Control</h1>
+<p class="tvc-status"><strong>In progress</strong> · Prototype development and bench testing. This page will be updated as integration and testing continue.</p>
             <p class="lead">Designing and integrating a fan-powered, one-axis stabilization exhibit for the St. Louis Science Center.</p>
         </header>
         <dl class="project-facts">
@@ -46,7 +48,7 @@
 <p class="section-number">02</p>
 <h2>My contribution</h2>
 <p>I developed one of the team’s four design concepts: a pinned rocket with its center of gravity above the pivot, limited travel, a motor-driven EDF gimbal, onboard sensing, and a joystick interface inside a clear enclosure.</p>
-<p>My development work has also included early sensor-to-actuator testing and investigating the interfaces between the microcontroller, servo controller, fan ESC, and power system. These tasks support our shared work on the complete exhibit; the final design combines decisions and contributions from the whole team.</p>
+<p>My development work includes sensor-to-actuator testing, BusLinker and servo communication, EDF throttle ramping, and coordinating these interfaces in the integrated Teensy sketch. These tasks support our shared work on the complete exhibit; the final design combines decisions and contributions from the whole team.</p>
 <figure><a href="../images/tvc/kailash-concept.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open Kailash&#x27;s concept sketch at full size"><img class="drawing" src="../images/tvc/kailash-concept.jpg" alt="Kailash&#x27;s annotated rocket concept showing the pivot, high center of gravity, fan gimbal, travel limits, joystick and acrylic enclosure" loading="lazy"></a><figcaption>My initial concept, reproduced from the team’s problem-understanding report. Click to enlarge.</figcaption>
 </figure>
 </section>
@@ -120,11 +122,48 @@
 <div class="loop" aria-label="Feedback loop"><span>Target angle</span><b aria-hidden="true">→</b><span>Controller</span><b aria-hidden="true">→</b><span>Fan gimbal</span><b aria-hidden="true">→</b><span>Rocket motion</span><small>IMU measurement feeds the body angle back to the controller.</small>
 </div>
 </div>
-</section>
+
+<div class="technical-topic" id="bench-integration">
+<h3 class="topic-title">Bench testing and integration</h3>
+<p>I tested the servo, IMU, and EDF separately before combining their interfaces in a Teensy 4.1 sketch. Getting the BusLinker working required checking UART wiring and selecting the correct Servo-TTL jumper configuration. Once communication worked, we could test gimbal motion alongside the fan hardware.</p>
+<div class="image-pair"><figure><a href="../images/tvc/buslinker-controller.webp" target="_blank" rel="noopener noreferrer"><img src="../images/tvc/buslinker-controller.webp" alt="HiWonder BusLinker controller with UART wiring and external power connections" width="1152" height="1536" loading="lazy" decoding="async"></a><figcaption>HiWonder BusLinker used to communicate with the serial bus servo.</figcaption></figure><figure><a href="../images/tvc/servo-bench-test.webp" target="_blank" rel="noopener noreferrer"><img src="../images/tvc/servo-bench-test.webp" alt="Servo and EDF gimbal bench setup connected to a microcontroller and bench power supply" width="1152" height="1536" loading="lazy" decoding="async"></a><figcaption>Bench setup for testing the BusLinker and servo before full prototype integration.</figcaption></figure></div>
+<h3>EDF power troubleshooting</h3>
+<p>The EDF made power transients part of the integration work. We moved toward higher power draw in steps, rather than jumping straight to a larger throttle command. Sudden stops also coincided with PSU shutdowns; our working diagnosis was a voltage overshoot reaching the supply’s protection threshold. That explanation still needs transient measurements to confirm.</p>
+<p>The revised sketch ramps the ESC command up and down for normal operation. This makes load changes more gradual, but it is not a guarantee against a supply trip. Immediate minimum-throttle commands remain separate from the normal ramped stop.</p>
+<figure><a href="../images/tvc/prototype-assembly.webp" target="_blank" rel="noopener noreferrer"><img src="../images/tvc/prototype-assembly.webp" alt="Alec assembling the thrust vector control prototype with the fan, electronics, and wooden support" width="1152" height="1536" loading="lazy" decoding="async"></a><figcaption>Alec assembling the prototype as we move from individual bench tests to an integrated system.</figcaption></figure>
+<h3>Coordinating the sensor, servo, and EDF</h3>
+<p>The main loop keeps serial commands and throttle ramping active while scheduling sensor-to-servo updates every 20 ms. The ramp changes the ESC pulse by 2 µs every 50 ms, with a 50% command limit for bench testing. These are command settings, not measured RPM, thrust, or power percentages.</p>
+<details><summary>View the coordination loop</summary><pre class="tvc-code" tabindex="0" aria-label="C++ coordination loop excerpt"><code>void loop() {
+  unsigned long now = millis();
+  readSerialCommands();
+  updateThrottleRamp();
+
+  if (now - lastServoUpdate &gt;= SERVO_UPDATE_MS) {
+    lastServoUpdate = now;
+    if (imuConnected) {
+      updateGyroControl();
+    }
+  }
+
+  if (now - lastStatusPrint &gt;= STATUS_INTERVAL_MS) {
+    lastStatusPrint = now;
+    printStatus();
+  }
+
+  while (Serial2.available() &gt; 0) {
+    Serial2.read();
+  }
+}</code></pre><p class="small-note">Excerpt from the supplied integrated test sketch, with comments and extra blank lines removed. Helper functions and initialization are omitted.</p></details>
+<p>The MPU6050 includes an accelerometer and gyroscope, but this version uses gyroscope rate feedback to command the servo. It does not yet estimate absolute tilt or demonstrate stable balancing. The sketch also includes arming, status output, and an IMU-fault response; it does not include a communication watchdog.</p>
+<p><a href="https://github.com/nsappling/ThrustVectorControl" target="_blank" rel="noopener noreferrer">View the team’s code, CAD, and project files on GitHub ↗</a></p>
+<h3>Essential components</h3>
+<p class="small-note">Core prototype hardware and power plan. The ordering sheet lists an Arduino Nano; the current integrated sketch uses Teensy 4.1.</p>
+<div class="tvc-table-wrap" tabindex="0" role="region" aria-label="Essential component list"><table class="tvc-parts"><caption>Control, actuation, and power components</caption><thead><tr><th scope="col">Subsystem</th><th scope="col">Component</th><th scope="col">Purpose / status</th></tr></thead><tbody><tr><th scope="row">Controller</th><td>Teensy 4.1</td><td>Coordinates sensor reads, servo commands, and ESC output.</td></tr><tr><th scope="row">IMU</th><td>GY-521 / MPU6050</td><td>Six-axis sensor; the current sketch uses Z-axis angular velocity.</td></tr><tr><th scope="row">Gimbal servo</th><td>HiWonder HTD-30H</td><td>Positions the fan gimbal.</td></tr><tr><th scope="row">Servo interface</th><td>HiWonder BusLinker</td><td>Serial interface between Teensy and bus servo.</td></tr><tr><th scope="row">Thrust</th><td>64 mm EDF</td><td>Ducted fan mounted on the gimbal.</td></tr><tr><th scope="row">Fan drive</th><td>Hobbywing Skywalker 50A ESC</td><td>Receives throttle pulse commands from Teensy.</td></tr><tr><th scope="row">Main power</th><td>12 V DC supply</td><td>Ordering sheet specifies 60 A / 720 W; final power configuration remains under review.</td></tr><tr><th scope="row">Interface computer</th><td>Raspberry Pi 5 + independent USB-C supply</td><td>Planned interface and logging computer.</td></tr><tr><th scope="row">Structure &amp; wiring</th><td>Flanged bearings, 12/18 AWG wiring, XT60 connectors, fuses</td><td>Pivot support, power distribution, and prototype assembly.</td></tr></tbody></table></div>
+</div></section>
 <section id="results" class="project-section">
 <p class="section-number">04</p>
 <h2>Results & next steps</h2>
-<p>The team completed the customer requirements, physical mockup, concept selection, and initial engineering models. Sensor and actuator bench tests support integration work; stable balancing and exhibit readiness have not yet been demonstrated.</p>
+<p>The team completed the customer requirements, physical mockup, concept selection, and initial engineering models. Servo communication and EDF bench tests now support integration work, and the combined test sketch coordinates rate-responsive servo motion with ramped throttle commands. Stable balancing and exhibit readiness have not yet been demonstrated.</p>
 <p>Next steps are the integrated prototype, hardware control tuning, and checks against the noise, enclosure, and repeat-use requirements.</p>
 <p><a class="text-link" href="../assets/tvc-problem-understanding.pdf" download>Download the design report ↓</a></p>
 </section>
