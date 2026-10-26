@@ -143,6 +143,18 @@ if (work && projectCarousel) {
         if (window.innerWidth <= 640) return;
         const heading = work.querySelector(".section-heading");
         const controls = work.querySelector(".carousel-controls");
+        const title = document.getElementById("work-title");
+        if (title) {
+            const current = title.textContent;
+            title.style.minHeight = "";
+            let titleHeight = 0;
+            projectCarousel.querySelectorAll(".project-card").forEach(card => {
+                title.textContent = card.dataset.heading || current;
+                titleHeight = Math.max(titleHeight, title.getBoundingClientRect().height);
+            });
+            title.textContent = current;
+            title.style.minHeight = Math.ceil(titleHeight) + "px";
+        }
         let copyHeight = 0;
         // Measure every slide so advancing never hides a longer caption.
         projectCarousel.querySelectorAll(".project-card").forEach(card => {
@@ -152,9 +164,9 @@ if (work && projectCarousel) {
             card.hidden = wasHidden;
         });
         const available = window.innerHeight - headerHeight - 16 - 28
-            - heading.getBoundingClientRect().height - 22
-            - controls.getBoundingClientRect().height - 16 - copyHeight - 24;
-        work.style.setProperty("--spotlight-height", Math.max(180, Math.min(560, available)) + "px");
+            - heading.getBoundingClientRect().height - 16
+            - controls.getBoundingClientRect().height - 12 - copyHeight - 24;
+        work.style.setProperty("--spotlight-height", Math.max(260, Math.min(640, available)) + "px");
     }
     function landOnWork() {
         if (!["#work", "#projects"].includes(window.location.hash)) return;
