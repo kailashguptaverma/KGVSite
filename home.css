@@ -37,3 +37,31 @@
  .homepage #work .section-heading > p { margin-top: 14px; }
  .homepage .project-carousel.is-ready .project-image img { height: clamp(200px,32svh,340px); }
 }
+
+/* Image-led project spotlight */
+.visually-hidden { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.homepage #work .section-heading { margin-bottom:16px; }
+.homepage #work .section-heading h2 { font-size:clamp(26px,2.7vw,36px); letter-spacing:-.035em; }
+.homepage #work .section-heading .eyebrow { margin-bottom:8px; }
+.homepage .work-hint { font-size:12px; }
+.homepage .carousel-controls { margin-bottom:12px; }
+.homepage .project-image { background:#dfe2d8; border-radius:3px; isolation:isolate; }
+.homepage .project-image::after { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(180deg,transparent 35%,rgba(16,23,19,.15) 55%,rgba(16,23,19,.88) 100%); }
+.homepage .project-carousel .project-image img { width:100%; height:var(--spotlight-height,52svh); min-height:260px; object-fit:var(--photo-fit,cover); object-position:var(--photo-position,center); }
+.homepage .project-carousel.is-ready .project-image img { min-height:260px; object-fit:var(--photo-fit,cover); }
+.homepage .project-image:hover img { transform:none; }
+.homepage .banner-caption { position:absolute; z-index:2; bottom:30px; left:32px; right:95px; color:#fff; display:flex; flex-direction:column; gap:10px; text-shadow:0 1px 8px rgba(0,0,0,.2); }
+.homepage .banner-category { font:10px/1.5 "Courier New",monospace; text-transform:uppercase; letter-spacing:1.8px; color:#e4e9de; }
+.homepage .banner-title { font-size:clamp(27px,3.3vw,44px); font-weight:400; letter-spacing:-.035em; line-height:1.1; }
+.homepage .project-arrow { z-index:3; bottom:30px; right:30px; }
+.homepage .project-carousel.is-ready .project-info { display:block; padding-top:14px; }
+.homepage .project-info p { max-width:820px; color:var(--muted); font-size:15px; line-height:1.65; }
+.homepage .project-directory { margin-top:36px; }
+@media(max-width:640px) {
+ .homepage #work { padding-top:24px; }
+ .homepage #work .section-heading .work-hint { display:none; }
+ .homepage .project-carousel.is-ready .project-image img { height:clamp(300px,48svh,480px); min-height:300px; }
+ .homepage .banner-caption { bottom:24px; left:20px; right:70px; gap:8px; }
+ .homepage .banner-title { font-size:28px; }
+ .homepage .project-arrow { bottom:24px; right:18px; width:36px; height:36px; font-size:20px; }
+}
