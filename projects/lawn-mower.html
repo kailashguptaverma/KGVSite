@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Evaluating a conventional mower conversion through drive sizing, sensor selection, and navigation architecture.">
+    <meta name="description" content="Retrofitting a push mower for teleoperation through drivetrain design, custom gearbox prototyping, and a staged path toward autonomy.">
     <meta name="theme-color" content="#f7f5f0">
-    <title>Autonomous Lawn Mower | Kailash Gupta-Verma</title>
+    <title>Lawn Mower Retrofit | Kailash Gupta-Verma</title>
     <link rel="stylesheet" href="../project-pages.css">
 </head>
 <body>
@@ -19,43 +19,95 @@
         <header class="project-intro">
             <a class="back-link" href="../index.html#work">← All projects</a>
             <p class="eyebrow">Independent project · Mobile robotics</p>
-            <h1>Autonomous Lawn Mower</h1>
+            <h1>Lawn Mower Retrofit</h1>
             <p class="lead">Evaluating a conventional mower conversion through drive sizing, sensor selection, and navigation architecture.</p>
         </header>
         <dl class="project-facts">
-<div><dt>Role</dt><dd>System architecture &amp; feasibility</dd>
+<div><dt>Role</dt><dd>Mechanical design, prototyping &amp; system planning</dd>
 </div>
-<div><dt>Context / status</dt><dd>Feasibility study</dd>
+<div><dt>Context / status</dt><dd>In progress · Independent garage project</dd>
 </div>
-<div><dt>Tools &amp; methods</dt><dd>Mobile robotics · System design · Navigation</dd>
+<div><dt>Tools &amp; methods</dt><dd>CAD · FDM printing · Gearbox design · Drive sizing · Controls planning</dd>
 </div></dl>
         <div class="project-media">
-<figure><img src="../images/lawn-mower.jpeg" alt="Autonomous lawn mower project"><figcaption>The platform for my autonomous lawn mower project.</figcaption>
+<figure><a href="../images/mower-retrofit-side.jpg" target="_blank" rel="noopener noreferrer"><img src="../images/mower-retrofit-side.jpg" alt="Side view of my partially disassembled mower showing the exposed motor, chassis, and wheels"></a><figcaption>The mower I’m retrofitting, with the upper housing removed to inspect the existing layout.</figcaption>
 </figure>
 </div>
         <div class="project-layout">
-            <aside class="sidebar"><nav aria-label="On this page"><a href="#overview">01 / Overview</a><a href="#contribution">02 / My contribution</a><a href="#process">03 / Design & development</a><a href="#results">04 / Results & next steps</a></nav></aside>
+            <aside class="sidebar"><nav aria-label="On this page"><a href="#overview">01 / Overview</a><a href="#contribution">02 / My contribution</a><a href="#process">03 / Design & development</a><a href="#results">04 / Progress & next steps</a></nav></aside>
             <div class="project-story">
 <section id="overview" class="project-section">
 <p class="section-number">01</p>
 <h2>Overview</h2>
-<p>This independent feasibility study explores converting a conventional LawnMaster mower into an autonomous mobile platform. The proposed system combines powered wheel drive, outdoor localization, obstacle detection, and navigation. The work focuses on understanding the mechanical and system requirements before committing to a complete build.</p>
+<div class="achievement"><strong>In progress</strong><p>I work on the physical build when I’m back home in my garage. Teardown and printed gearbox parts are underway; powered driving, mowing tests, and autonomous navigation are still development goals. I’ll update this page as the hardware progresses.</p></div>
+<p>This project started with a question: what would it take to turn a conventional push mower into a remotely driven machine? I began with a feasibility study, then took apart the mower to understand the space available for a drivetrain and controls. The immediate goal is a controllable mobile platform; autonomy is a longer-term extension.</p>
+<p>The retrofit brings together the work I enjoy most: inspecting existing hardware, working through a mechanism in CAD, making parts, and using the next prototype to answer a more specific question. Building around an existing mower also means dealing with real constraints—wheel locations, ground clearance, access, and a blade motor that already occupies the middle of the chassis.</p>
+<figure><a href="../images/mower-retrofit-overview.jpg" target="_blank" rel="noopener noreferrer"><img src="../images/mower-retrofit-overview.jpg" alt="Front view of the mower with its handle upright and upper housing removed" loading="lazy"></a><figcaption>Early teardown: documenting the base platform before adding a powered drivetrain.</figcaption></figure>
 </section>
 <section id="contribution" class="project-section">
 <p class="section-number">02</p>
 <h2>My contribution</h2>
-<p>I investigated the platform&#x27;s mass, wheel size, and drive requirements and compared approaches for computing, sensing, and navigation. I explored how a Raspberry Pi or Jetson could handle higher-level navigation while a microcontroller manages lower-level hardware. My work also considered emergency stopping and how the added systems would fit around the existing mower.</p>
+<p>I developed the initial research and system plan, started disassembling the mower, and began making parts for custom gearboxes with my Bambu Lab 3D printer. The work has moved beyond a paper concept into physical prototyping, while the complete drive and control system remains in development.</p>
+<div class="requirements">
+<article><strong>Mechanical layout</strong><span>Inspecting the existing chassis and planning how drive motors, gearboxes, and mounts could fit around it.</span></article>
+<article><strong>Drive sizing</strong><span>Estimating wheel loads and comparing the torque, speed, and packaging implications of gear reduction.</span></article>
+<article><strong>CAD &amp; 3D printing</strong><span>Developing custom gearbox parts and using FDM prototypes to work through fit, assembly, and design changes.</span></article>
+<article><strong>System integration</strong><span>Planning teleoperation, separate drive and blade functions, power distribution, and a later navigation layer.</span></article>
+</div>
+<h3>Garage development</h3>
+<p>Hardware progress happens in sessions at home, so I’m approaching the project in manageable pieces: inspect the mower, work through the drivetrain layout, print parts, and return to the assembly to check what fits. It is an ongoing personal build, with room to revise the approach as the physical constraints become clearer.</p>
 </section>
 <section id="process" class="project-section">
 <p class="section-number">03</p>
-<h2>Design & development</h2>
-<p>The study began with estimates of wheel torque and the loads involved in moving the mower. I then explored an architecture using ROS 2 and Nav2, with RTK GPS, an IMU, and wheel encoders for localization. Depth cameras and 2D LiDAR were considered for obstacle detection. These components remain proposed options rather than a fully installed or validated system.</p>
+<h2>Design &amp; development</h2>
+<h3>Teardown and retrofit constraints</h3>
+<p>Removing the housing exposed the central AC blade motor and the surrounding chassis. That helped separate two different engineering tasks: adding propulsion at the wheels and deciding how to power and control the existing cutting system. The wheel drive can be developed on its own before integrating mowing.</p>
+<div class="image-pair">
+<figure><a href="../images/mower-retrofit-motor.jpg" target="_blank" rel="noopener noreferrer"><img src="../images/mower-retrofit-motor.jpg" alt="Exposed central blade motor and wiring inside the mower" loading="lazy"></a><figcaption>The existing AC motor drives the blade; it is separate from the proposed wheel-drive motors.</figcaption></figure>
+<figure><a href="../images/mower-retrofit-underside.jpg" target="_blank" rel="noopener noreferrer"><img src="../images/mower-retrofit-underside.jpg" alt="Underside of the mower showing its deck, wheel arrangement, and central blade area" loading="lazy"></a><figcaption>The underside view informs ground clearance, mounting space, and protection of the cutting area.</figcaption></figure>
+</div>
+<p>The layout has to account for wheel loading, changes to the mower’s balance, access for assembly, and hardware that may be replaced during testing. A mount that looks compact in CAD still needs room for fasteners, tools, wiring, and removal.</p>
+<h3>Wheel torque and gear reduction</h3>
+<p>My feasibility study explored independently driving the rear wheels so that differences in left and right speed could steer the mower. That remains the candidate drivetrain. Turning resistance, traction, and the behavior of the existing front wheels still need physical evaluation.</p>
+<p>I estimated drive requirements from mower mass, wheel radius, and resistance on grass. The paper used an initial target of roughly 7–10 N·m per driven wheel with a design margin. This is a sizing estimate to revisit with measurements, rather than a measured output or proof that the mower can handle every surface.</p>
+<details><summary>Drive sizing relationships</summary>
+<div class="model"><span>GROUND LOAD TO WHEEL TORQUE</span><div class="equation">F ≈ C<sub>rr</sub>mg cos α + mg sin α + ma</div><div class="equation">T<sub>wheel</sub> ≈ Fr / 2</div><p>The simplified force estimate includes rolling resistance, slope, and acceleration. It assumes two driven wheels sharing the load equally; grass conditions, turning scrub, traction limits, and uneven loading need separate checks. Here m is mass, r is wheel radius, α is slope, and C<sub>rr</sub> is rolling-resistance coefficient.</p></div>
+<div class="model"><span>REDUCTION AND SPEED</span><div class="equation">T<sub>out</sub> ≈ ηG T<sub>motor</sub> &nbsp; · &nbsp; ω<sub>out</sub> = ω<sub>motor</sub> / G</div><p>A reduction ratio G trades output speed for torque, with efficiency η accounting for losses. Wheel speed follows v = rω. The useful choice depends on motor performance under load, current draw, packaging, and the desired driving speed.</p></div>
+<p class="small-note">These are preliminary sizing models. No final gearbox ratio, motor selection, or drive performance is claimed here.</p>
+</details>
+<h3>Custom gearboxes and printed parts</h3>
+<p>I’ve started making parts for custom gearboxes on my Bambu Lab printer. The purpose of the early prints is to make the drivetrain layout tangible: check how components locate, how the assembly goes together, and where the geometry needs to change before committing to a more durable build.</p>
+<p>The CAD-to-print workflow is part of the engineering work. I use the printer to produce functional prototypes, considering part orientation, support needs, wall structure, clearances, and how the part will be loaded. Printing a part is one step; checking its fit and revising the model is what makes the next version useful.</p>
+<details><summary>Gearbox design questions I’m working through</summary>
+<ul>
+<li><strong>Ratio and layout:</strong> how much reduction fits near the wheel without sacrificing ground clearance?</li>
+<li><strong>Load path:</strong> how should the wheel axle be supported so wheel loads do not rely on a motor shaft alone?</li>
+<li><strong>Fit and alignment:</strong> how will printed tolerances affect bearing seats, shaft spacing, and gear engagement?</li>
+<li><strong>Assembly:</strong> can the housing be opened, aligned, and fastened without making every adjustment a teardown?</li>
+<li><strong>Durability:</strong> which parts are useful as fit-check prints, and which need stronger materials or purchased hardware before loaded testing?</li>
+</ul>
+<p class="small-note">These are current design considerations. Printed components have not yet been qualified for sustained lawn loads.</p>
+</details>
+<figure><a href="../images/mower-retrofit-parts.jpg" target="_blank" rel="noopener noreferrer"><img src="../images/mower-retrofit-parts.jpg" alt="Removed mower housing components and hardware laid out during teardown" loading="lazy"></a><figcaption>Removed parts from the original mower. The teardown helps distinguish hardware to retain from space available for the retrofit.</figcaption></figure>
+<h3>Teleoperation before autonomous navigation</h3>
+<p>The first control milestone is deliberate, low-speed driving under direct command. My proposed architecture separates higher-level commands from low-level motor control: a single-board computer could handle the operator interface and later navigation, while a microcontroller manages wheel commands and feedback.</p>
+<div class="sequence">
+<div><b>01</b><strong>Drive prototype</strong><span>Check gearbox fit and wheel motion with the cutting system disabled.</span></div>
+<div><b>02</b><strong>Teleoperation</strong><span>Develop commanded movement, steering response, and predictable stopping.</span></div>
+<div><b>03</b><strong>Navigation study</strong><span>Evaluate localization and obstacle sensing once the drive platform is repeatable.</span></div>
+</div>
+<p>The research considered wheel encoders, an IMU, RTK positioning, and camera or range sensing as possible inputs for later navigation. Those remain options to evaluate, not installed capabilities. Starting with teleoperation gives the mechanical and electrical systems a concrete test before adding more software.</p>
+<h3>Power and stopping behavior</h3>
+<p>The original blade uses an AC motor, while the proposed wheel motors and controls would use DC power. That leaves an important architecture decision open: retain a corded cutting system or develop a suitable onboard power arrangement. A battery for the drive system alone would not resolve the blade’s power requirements.</p>
+<p>The planned controls need separate enable logic for driving and cutting, a stop on lost commands, and an independent hardware means of removing motor power. Early motion tests will keep cutting disabled. These functions are requirements for the build, with implementation and verification still ahead.</p>
+<h3>Design exploration: a modular drive assembly</h3>
+<p>One direction I’m exploring is a removable drive module that brings the motor, reduction, axle support, and mounting interface together. In that version, the module could be developed on the bench, checked against the mower, and revised without rebuilding the whole platform. The tradeoff is added structure and alignment requirements—so it is a concept to compare, not a settled design.</p>
 </section>
 <section id="results" class="project-section">
 <p class="section-number">04</p>
-<h2>Results & next steps</h2>
-<p>Completed an initial requirements study and candidate system architecture. Drive sizing, localization, obstacle sensing, and stopping behavior were identified as the main integration questions.</p>
-<p>The proposed sensors and navigation stack have not been validated on a complete mower. The next step is a controlled drive-system prototype and sensor evaluation.</p>
+<h2>Progress &amp; next steps</h2>
+<p>Completed so far: the initial feasibility study, early mower teardown, drivetrain planning, and the start of printed gearbox parts. Together, those steps have moved the project toward a physical retrofit and made the remaining design questions more specific.</p>
+<p>Next I’m working toward a fitted drive assembly, unloaded gearbox checks, and controlled teleoperation tests. Loaded driving, integrated mowing, and autonomous operation remain future milestones. I’ll continue documenting the build as I get time in the garage.</p>
 </section>
 </div>
         </div>
