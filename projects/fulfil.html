@@ -27,7 +27,7 @@
 </div>
 <div><dt>Context / status</dt><dd>May–August 2025</dd>
 </div>
-<div><dt>Tools &amp; methods</dt><dd>SolidWorks · Mechanism design · Tolerance analysis · Prototyping · Design for manufacturing</dd>
+<div><dt>Tools &amp; methods</dt><dd>SolidWorks · Spring analysis · Spreadsheet modeling · Physical prototyping · DFM</dd>
 </div></dl>
         <div class="project-layout">
             <aside class="sidebar"><nav aria-label="On this page"><a href="#overview">01 / Overview</a><a href="#contribution">02 / My contribution</a><a href="#process">03 / Design & development</a><a href="#results">04 / Results & next steps</a></nav></aside>
@@ -35,44 +35,70 @@
 <section id="overview" class="project-section">
 <p class="section-number">01</p>
 <h2>Overview</h2>
-<p class="small-note"><strong>A note on project details:</strong> Much of my work is confidential, so I can’t share specific designs, prototype photos, calculations, or internal results. This page focuses on the engineering methods I used and the skills I developed.</p>
+<p class="small-note"><strong>A note on project details:</strong> Much of my work is confidential, so I can’t share specific designs, prototype photos, internal calculations, or test results. This page focuses on the engineering methods I used and the skills I developed.</p>
 <p>Fulfil builds robotic systems for online grocery fulfillment. Its public platform combines inventory storage, automated dispensing, mobile ShopBot robots, and temperature-controlled areas to pick and pack orders directly into grocery bags.</p>
 <p>During summer 2025, I worked on mechanical hardware supporting bag handling and tote positioning. These tasks sit at the interface between flexible packaging and repeatable automation: the hardware has to accommodate variation while fitting into a larger moving system.</p>
 <p class="public-source">Company background: <a href="https://www.fulfil.com/technology" target="_blank" rel="noopener noreferrer">Fulfil’s public technology overview ↗</a></p>
+<figure>
+<div class="video-frame">
+<iframe title="Fulfil grocery automation overview" src="https://player.vimeo.com/video/794174050?h=a86e4f9008" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+</div>
+<figcaption>Fulfil’s public system video. <a href="https://vimeo.com/794174050/a86e4f9008" target="_blank" rel="noopener noreferrer">Watch on Vimeo ↗</a></figcaption>
+</figure>
 </section>
 <section id="contribution" class="project-section">
 <p class="section-number">02</p>
 <h2>My contribution</h2>
-<p>I developed CAD models, compared mechanical concepts, built calculation tools, and evaluated prototypes. My analysis linked assembly variation to required motion, spring force, and material stress. I also led mechanical concept work for a positioning mechanism and coordinated with teammates on electrical requirements and test planning.</p>
+<p>I compared spring-based mechanisms, built a spreadsheet to evaluate deflection and force, and spent a large part of the summer making and testing physical prototypes. I sourced spring options through OSH Cut and McMaster-Carr, revised CAD for injection molding and CNC machining, and passed the designs and supporting work back to the team. I also led mechanical concept work for a positioning mechanism and coordinated electrical requirements and test planning.</p>
 <div class="requirements">
-<article><strong>Mechanical analysis</strong><span>Spring sizing, force–deflection relationships, bending stress, and tolerance stackups.</span></article>
+<article><strong>Mechanical analysis</strong><span>Torsion, beam-bending, and linear spring comparisons; spreadsheet calculations and tolerance stackups.</span></article>
 <article><strong>CAD & integration</strong><span>Component interfaces, motion envelopes, clearances, and assembly access.</span></article>
-<article><strong>Prototype evaluation</strong><span>Using physical behavior to challenge assumptions and prioritize revisions.</span></article>
-<article><strong>Technical handoff</strong><span>Documenting tradeoffs, test findings, manufacturing considerations, and open questions.</span></article>
+<article><strong>Prototype evaluation</strong><span>Hands-on builds and spring trials to check predicted deflection and guide revisions.</span></article>
+<article><strong>Technical handoff</strong><span>DFM revisions for molding and CNC machining, with design rationale and open work passed to the team.</span></article>
 </div>
 </section>
 <section id="process" class="project-section">
 <p class="section-number">03</p>
 <h2>Design & development</h2>
-<h3>Compliance and force control</h3>
-<p>A compliant mechanism allows motion under load instead of forcing every part to meet at one exact position. I used spring calculations to connect available travel with contact force, then checked whether the mechanism could accommodate variation without overstressing the material or damaging what it handled.</p>
-<details><summary>General engineering principles</summary>
-<div class="model"><span>SPRING RESPONSE</span><div class="equation">F = kδ</div><p>For an ideal linear spring, stiffness k sets how quickly force rises with deflection δ. More travel can improve tolerance accommodation, but it also changes force and packaging requirements.</p></div>
-<div class="model"><span>TOLERANCE ACCUMULATION</span><p>Worst-case stackups consider the combined dimensional extremes. Root-sum-square estimates can help assess independent random variation when the statistical assumptions are justified. I used tolerance analysis to connect dimensional uncertainty to the motion a mechanism needed to accommodate.</p></div>
-<p class="small-note">These are general principles, not Fulfil dimensions, design calculations, or performance data.</p>
+<h3>Spring selection and compliance</h3>
+<p>I considered torsion springs, beam-bending springs, and linear springs to provide controlled motion and contact force. Each offered a different balance of travel, stiffness, packaging, and assembly. The goal was a useful operating deflection across dimensional variation, with enough force to hold the bag securely without damaging it.</p>
+<details><summary>Spring equations and design tradeoffs</summary>
+<p class="small-note">The equations below illustrate standard idealized models. They do not reproduce internal designs, spreadsheet values, or test data.</p>
+<div class="model">
+<span>LINEAR SPRINGS</span>
+<div class="equation">F = F<sub>0</sub> + kδ</div>
+<p>Force F increases with displacement δ at spring rate k; F<sub>0</sub> represents any initial preload. This made the connection between tolerance-driven travel and changing contact force explicit. A lower rate reduces force variation over a given travel, while preload changes the starting force. This model applies over an approximately linear working range.</p>
+</div>
+<div class="model">
+<span>TORSION SPRINGS</span>
+<div class="equation">T = T<sub>0</sub> + k<sub>θ</sub>θ &nbsp; · &nbsp; F = T / r<sub>⊥</sub></div>
+<p>A torsion spring provides torque T as its angle θ changes. T<sub>0</sub> is preload torque, k<sub>θ</sub> is angular stiffness, and r<sub>⊥</sub> is the perpendicular moment arm of the contact force. I considered how rotation and leverage translated spring torque into useful force; that leverage can change as a mechanism moves. Angular units must match the spring-rate units.</p>
+</div>
+<div class="model">
+<span>BEAM-BENDING SPRINGS</span>
+<div class="equation">δ = FL<sup>3</sup> / (3EI) &nbsp; · &nbsp; k = 3EI / L<sup>3</sup></div>
+<div class="equation">I = bt<sup>3</sup> / 12 &nbsp; · &nbsp; σ<sub>max</sub> = 6FL / (bt<sup>2</sup>)</div>
+<p>For a uniform rectangular cantilever with a transverse tip load, L is free length, E is Young’s modulus, I is the second moment of area, b is width, and t is thickness in the bending direction. These small-deflection, linear-elastic relations show why thickness and free length strongly affect stiffness, and why deflection needs to be checked alongside peak bending stress. Different supports and loading require different beam models.</p>
+</div>
+<p class="public-source">General references: <a href="https://www.leespring.com/learn-about-torsion-springs" target="_blank" rel="noopener noreferrer">Lee Spring: torsion springs ↗</a> · <a href="https://extapps.ksc.nasa.gov/Reliability/Documents/Mechanical-Design-Reliability-Monograph.pdf" target="_blank" rel="noopener noreferrer">NASA: mechanical design reference ↗</a></p>
 </details>
-<h3>Stress and material selection</h3>
-<p>I compared spring behavior with material strength and manufacturing constraints. The tradeoff was broader than stiffness alone: useful travel, bending stress, available space, fabrication methods, and assembly all affected whether a concept was practical.</p>
+<h3>Spreadsheet analysis and working deflection</h3>
+<p>The spreadsheet was a central part of the design process. I used it to connect assembly tolerance stackups with required travel, then compare spring options by their predicted force, deflection, and stress. It let me change assumptions and see how a candidate behaved across the working range, rather than selecting a spring from one nominal position.</p>
+<p>I used those comparisons to identify a practical deflection range: enough compliance to accommodate variation, with suitable contact force and room for the mechanism to move. “Optimal” meant balancing those requirements. The spreadsheet narrowed the options; physical prototypes were how I checked whether the predicted behavior held up in the assembly.</p>
+<h3>Spring sourcing and physical prototyping</h3>
+<p>I sourced springs through OSH Cut and McMaster-Carr and did extensive hands-on building, fitting, and testing. Trying the hardware helped confirm useful deflection and exposed contact, clearance, and assembly issues that the calculations could not fully capture.</p>
+<p>I fed those observations back into spring selection, geometry, and the spreadsheet. That repeated cycle of calculation, build, test, and revision was a substantial part of my contribution, and helped establish which options were worth developing further.</p>
+<h3>Design for manufacturing and team handoff</h3>
+<p>I also worked through DFM on multiple designs for injection molding and CNC machining. That meant revising the CAD with the intended process in mind and considering how parts would be made, assembled, and integrated—not just whether the mechanism moved correctly.</p>
+<p>I passed the revised designs and supporting analysis back to the team, documenting the reasoning behind changes, prototype findings, manufacturing considerations, and remaining questions. The handoff gave the team a basis for continuing development after my internship.</p>
 <h3>Positioning and actuation</h3>
-<p>For the positioning work, I compared linkage and actuator approaches while considering load paths, alignment, packaging, and behavior when power was removed. I coordinated those mechanical choices with the electrical and testing work rather than treating actuator selection as a standalone task.</p>
-<h3>Testing and manufacturability</h3>
-<p>Prototype evaluation helped identify contact, clearance, and assembly issues that were difficult to resolve from calculations alone. I used those observations to revise the design and consider machining, molding, component sourcing, and cost.</p>
+<p>For the positioning work, I compared linkage and actuator approaches while considering load paths, alignment, packaging, and behavior when power was removed. I coordinated those mechanical choices with the electrical and testing work.</p>
 </section>
 <section id="results" class="project-section">
 <p class="section-number">04</p>
 <h2>Results & next steps</h2>
-<p>I delivered concept comparisons, CAD, calculation work, prototype evaluations, and a technical handoff. Further system testing and production-readiness work remained at the end of the internship.</p>
-<p>The summer strengthened my ability to turn an open-ended hardware problem into requirements, analysis, and testable decisions—and to explain the tradeoffs clearly to the next engineer.</p>
+<p>I handed off spring comparisons, the analysis spreadsheet, CAD revised for manufacturing, and findings from physical prototypes. The work connected calculations to hardware decisions and gave the team a documented starting point for continued development.</p>
+<p>Further system testing, final design selection, and production-readiness work remained open at the end of the internship.</p>
 </section>
 </div>
         </div>
