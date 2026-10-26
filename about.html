@@ -155,6 +155,15 @@
             letter-spacing: -0.4px;
         }
 
+        .personal-intro { max-width: 680px; }
+        .personal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 32px; margin: 28px 0; }
+        .personal-grid h3 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+        .personal-grid p { margin: 0; }
+        .personal-photos { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px; margin-top: 30px; }
+        .personal-photos img { display: block; width: 100%; height: 240px; object-fit: cover; border-radius: 5px; }
+        .personal-photos figure { margin: 0; }
+        .personal-photos figcaption { margin-top: 6px; color: var(--muted); font-size: 12px; }
+
         .experience-list {
             list-style: none;
             margin: 0;
@@ -237,6 +246,11 @@
                 font-size: 12px;
             }
 
+            .personal-grid { grid-template-columns: 1fr; gap: 20px; }
+            .personal-photos { grid-template-columns: 1fr 1fr; }
+            .personal-photos figure:first-child { grid-column: 1 / -1; }
+            .personal-photos img { height: 200px; }
+
             footer {
                 flex-wrap: wrap;
             }
@@ -289,8 +303,8 @@
                 </p>
 
                 <p>
-                    Outside engineering, I like hiking, cooking, and
-                    dancing with WashU Bhangra.
+                    When I’m not building something, you might find me on a
+                    hike, listening to music, or hanging out with my dog.
                 </p>
 
                 <div class="social-links">
@@ -338,6 +352,45 @@
         </section>
 
         <div class="details">
+            <section class="section" aria-labelledby="beyond-title">
+                <h2 id="beyond-title">A little more about me</h2>
+                <p class="personal-intro">
+                    There’s a lot more to me than the projects on this site.
+                    I love getting outside, exploring new places, and spending
+                    time with the people (and dog) I care about.
+                </p>
+                <div class="personal-grid">
+                    <div>
+                        <h3>Outside &amp; on the move</h3>
+                        <p>I love hiking and surfing, and I ran cross country in
+                            high school. I also enjoy cooking and dancing with
+                            WashU Bhangra.</p>
+                    </div>
+                    <div>
+                        <h3>Exploring new places</h3>
+                        <p>I studied abroad in Spain, an experience that gave me
+                            the chance to explore somewhere new and see life
+                            from a different perspective.</p>
+                    </div>
+                    <div>
+                        <h3>Music &amp; my dog</h3>
+                        <p>Listening to music and hanging out with my dog are
+                            two of my favorite ways to unwind.</p>
+                        <!-- Add a Spotify link here when it is available. -->
+                    </div>
+                    <div>
+                        <h3>Chicago sports</h3>
+                        <p>I’m a big Chicago sports fan, and especially a
+                            Chicago Cubs fan. Go Cubs!</p>
+                    </div>
+                </div>
+                <div class="personal-photos">
+                    <figure><img src="images/about-hiking.jpeg" alt="Kailash looking out at a mountain valley" loading="lazy"><figcaption>Out on a hike</figcaption></figure>
+                    <figure><img src="images/about-sunset.jpeg" alt="A person taking in a sunset among rock formations" loading="lazy"><figcaption>Exploring outdoors</figcaption></figure>
+                    <figure><img src="images/about-dog.png" alt="Kailash holding his dog" loading="lazy"><figcaption>Hanging out with my dog</figcaption></figure>
+                </div>
+            </section>
+
             <section class="section" aria-labelledby="experience-title">
                 <h2 id="experience-title">Experience</h2>
 
