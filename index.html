@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Kailash Gupta-Verma's engineering portfolio — robotics, mechanical design, biomedical research, and web development.">
+    <meta name="theme-color" content="#f7f5f0">
+
+    <title>Kailash Gupta-Verma | Engineering & Design</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <script src="script.js" defer></script>
+    <!-- Older project-page About links arrive here with #about. -->
+    <script>if (window.location.hash === "#about") window.location.replace("about.html");</script>
+</head>
+
+<body class="homepage">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- navigation -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="./"
+                aria-label="Kailash Gupta-Verma home">
+                kgv<span>.</span>
+            </a>
+
+            <button class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="navigation"
+                hidden>
+                Menu
+            </button>
+
+            <nav id="navigation" aria-label="Main navigation">
+                <a href="#work">Work</a>
+                <a href="about.html">About</a>
+                <a href="#contact">
+                    Get in touch <span aria-hidden="true">↗</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- introduction -->
+        <section class="hero container" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow">
+                    Mechanical engineering · WashU ’27
+                </p>
+
+                <h1 id="hero-title">
+                    Kailash<br>Gupta-Verma
+                </h1>
+
+                <p class="hero-description">
+                    Mechanical engineering at Washington University in St. Louis.<br>Design, prototyping, and testing across robotics, medical devices, and research.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button" href="#work">
+                        View selected work
+                        <span aria-hidden="true">↘</span>
+                    </a>
+
+                    <a class="text-link" href="about.html">
+                        About & experience
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <figure class="hero-photo">
+                    <img src="images/portPFP.jpeg"
+                        alt="Portrait of Kailash Gupta-Verma"
+                        fetchpriority="high">
+
+                    <figcaption>
+                        <span>Kailash Gupta-Verma</span>
+                        <span>Mechanical engineering</span>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="hero-bottom">
+                <span>Robotics / Mechanisms / Prototyping</span>
+
+                <a href="#work">
+                    Scroll to explore <span aria-hidden="true">↓</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- project spotlight -->
+        <section class="work-section" id="work"
+            aria-labelledby="work-title">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">01 / Selected work</p>
+                        <h2 id="work-title">Selected work</h2>
+                    </div>
+
+                    <p>
+                        Research, industry experience, and engineering projects.
+                    </p>
+                </div>
+
+                <div class="project-carousel"
+                    role="region"
+                    aria-roledescription="carousel"
+                    aria-label="Featured projects">
+
+                    <div class="carousel-controls">
+                        <p class="carousel-status"
+                            id="project-status"
+                            aria-live="polite"
+                            aria-atomic="true"></p>
+
+                        <div class="carousel-buttons">
+                            <button class="carousel-button"
+                                id="previous-project"
+                                type="button"
+                                aria-label="Show previous project"
+                                aria-controls="project-track"
+                                hidden>
+                                <span aria-hidden="true">←</span>
+                            </button>
+
+                            <button class="carousel-button"
+                                id="next-project"
+                                type="button"
+                                aria-label="Show next project"
+                                aria-controls="project-track"
+                                hidden>
+                                <span aria-hidden="true">→</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-grid" id="project-track">
+                        <!-- meshalyzer -->
+                        <article class="project-card featured">
+                            <a class="project-image"
+                                href="projects/meshalyzer.html"
+                                aria-label="Read about MeshAlyzer">
+
+                                <img src="images/meshalyzer.jpg"
+                                    alt="MeshAlyzer tissue testing platform on a laboratory bench"
+                                    loading="lazy">
+
+                                <span class="image-label">
+                                    Biomedical research
+                                </span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        01 / Lake Lab
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/meshalyzer.html">
+                                            MeshAlyzer
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        Improving a dynamic tissue testing
+                                        platform that simulates breathing
+                                        and coughing.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>Mechanical design</span>
+                                    <span>Instrumentation</span>
+                                    <span>Python</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- fulfil -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/fulfil.html"
+                                aria-label="Read about my mechanical engineering internship at Fulfil">
+
+                                <img src="images/fulfil.jpg"
+                                    alt="Fulfil's automated grocery fulfillment equipment"
+                                    loading="lazy">
+
+                                <span class="image-label">
+                                    Product design
+                                </span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        02 / Fulfil Solutions
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/fulfil.html">
+                                            Fulfil Solutions
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        Compliant bag-retention mechanisms and tote-positioning
+                                        concepts for automated grocery fulfillment.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>CAD</span>
+                                    <span>Tolerance analysis</span>
+                                    <span>Prototyping</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- rover claw -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/rover-claw.html"
+                                aria-label="Read about the Mars rover claw">
+
+                                <img src="images/roverCover.jpeg"
+                                    alt="Prototype of the WashU Mars rover claw"
+                                    loading="lazy">
+
+                                <span class="image-label">Robotics</span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        03 / WashU Robotics
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/rover-claw.html">
+                                            Mars rover arm & claw
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        Designing and prototyping an end effector
+                                        for a competition Mars rover.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>Mechanisms</span>
+                                    <span>CAD</span>
+                                    <span>Prototyping</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- senior design -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/senior-design.html"
+                                aria-label="Read about the thrust vector control demonstration">
+
+                                <img src="images/snrDesignCover.jpeg"
+                                    alt="Thrust vector control rocket demonstration"
+                                    loading="lazy">
+
+                                <span class="image-label">Senior design</span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        04 / WashU Senior Design
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/senior-design.html">
+                                            Thrust vector control
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        A fan-powered thrust vector control
+                                        demonstration that brings feedback
+                                        control to the science center.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>Controls</span>
+                                    <span>Electromechanical design</span>
+                                    <span>Arduino</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- johnson & johnson -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/jnj.html"
+                                aria-label="Read about my Johnson and Johnson internship">
+
+                                <img src="images/jnj.jpg"
+                                    alt="My summer internship at Johnson & Johnson"
+                                    loading="lazy">
+
+                                <span class="image-label">
+                                    Industry experience
+                                </span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        05 / Johnson & Johnson
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/jnj.html">
+                                            Johnson & Johnson
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        A closer look at my summer internship
+                                        experience at Johnson & Johnson.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>Internship</span>
+                                    <span>Engineering</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- autonomous lawn mower -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/lawn-mower.html"
+                                aria-label="Read about my autonomous lawn mower project">
+
+                                <img src="images/lawn-mower.jpeg"
+                                    alt="Autonomous lawn mower project"
+                                    loading="lazy">
+
+                                <span class="image-label">
+                                    Independent project
+                                </span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        06 / Autonomous Lawn Mower
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/lawn-mower.html">
+                                            Autonomous lawn mower
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        Exploring the mechanical, sensing,
+                                        and navigation requirements for
+                                        an autonomous mowing system.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>Mobile robotics</span>
+                                    <span>System design</span>
+                                    <span>Navigation</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- cse 330 -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/cse330.html"
+                                aria-label="Read about my CSE 330 web development work">
+
+                                <img src="images/web-development.svg"
+                                    alt="Screenshot of my CSE 330 web development work"
+                                    loading="lazy">
+
+                                <span class="image-label">
+                                    Web development
+                                </span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        07 / CSE 330
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/cse330.html">
+                                            Web application development
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        Full-stack coursework connecting browser
+                                        interactions, server-side logic,
+                                        databases, and deployment.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>JavaScript</span>
+                                    <span>PHP & MySQL</span>
+                                    <span>AWS</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- frc -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/frc.html"
+                                aria-label="Read about my FRC robotics experience">
+
+                                <img src="images/frc.jpeg"
+                                    alt="Team 254 competition robot"
+                                    loading="lazy">
+
+                                <span class="image-label">
+                                    Competition robotics
+                                </span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        08 / FRC Team 254
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/frc.html">
+                                            FRC Team 254
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        Mechanical design, wiring, and integration
+                                        across the 2022 and 2023 competition seasons.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>Robotics</span>
+                                    <span>Mechanical design</span>
+                                    <span>Integration</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- circuit car -->
+                        <article class="project-card">
+                            <a class="project-image"
+                                href="projects/arduino-car.html"
+                                aria-label="Read about Circuit Car">
+
+                                <img src="images/circuits.svg"
+                                    alt="Arduino-powered Circuit Car prototype"
+                                    loading="lazy">
+
+                                <span class="image-label">
+                                    Embedded systems
+                                </span>
+                                <span class="project-arrow"
+                                    aria-hidden="true">↗</span>
+                            </a>
+
+                            <div class="project-info">
+                                <div>
+                                    <p class="project-number">
+                                        09 / Independent Project
+                                    </p>
+
+                                    <h3>
+                                        <a href="projects/arduino-car.html">
+                                            Circuit Car
+                                        </a>
+                                    </h3>
+
+                                    <p>
+                                        A microcontroller-based vehicle exploring
+                                        Bluetooth control, ultrasonic sensing,
+                                        and motor circuitry.
+                                    </p>
+                                </div>
+
+                                <div class="tags">
+                                    <span>Arduino</span>
+                                    <span>Electronics</span>
+                                    <span>Controls</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- compact project directory -->
+                <div class="project-directory">
+                    <div class="directory-heading">
+                        <p class="eyebrow">Explore all projects</p>
+                        <span>Pick something that catches your eye.</span>
+                    </div>
+
+                    <div class="project-matrix">
+                        <a class="mini-project" href="projects/meshalyzer.html">
+                            <img src="images/meshalyzer.jpg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Biomedical research</span>
+                                <h3>MeshAlyzer</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/fulfil.html">
+                            <img src="images/fulfil.jpg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Product design</span>
+                                <h3>Fulfil Solutions</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/rover-claw.html">
+                            <img src="images/roverCover.jpeg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Robotics</span>
+                                <h3>Mars Rover Claw</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/senior-design.html">
+                            <img src="images/snrDesignCover.jpeg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Senior design</span>
+                                <h3>Thrust Vector Control</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/jnj.html">
+                            <img src="images/jnj.jpg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Summer internship</span>
+                                <h3>Johnson & Johnson</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/lawn-mower.html">
+                            <img src="images/lawn-mower.jpeg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Mobile robotics</span>
+                                <h3>Autonomous Mower</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/cse330.html">
+                            <img src="images/web-development.svg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Web development</span>
+                                <h3>CSE 330</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/frc.html">
+                            <img src="images/frc.jpeg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Competition robotics</span>
+                                <h3>FRC Team 254</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+
+                        <a class="mini-project" href="projects/arduino-car.html">
+                            <img src="images/circuits.svg"
+                                alt="" loading="lazy">
+                            <div class="mini-project-copy">
+                                <span class="mini-project-category">Embedded systems</span>
+                                <h3>Circuit Car</h3>
+                            </div>
+                            <span class="mini-project-arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- about -->
+        <section class="about-section container" id="about"
+            aria-labelledby="about-title">
+            <div class="about-image">
+                <img src="images/about-me.jpg"
+                    alt="Kailash outdoors near the coast"
+                    loading="lazy">
+
+                <span class="image-caption">
+                    Away from the workbench.
+                </span>
+            </div>
+
+            <div class="about-copy">
+                <p class="eyebrow">02 / Behind the projects</p>
+
+                <h2 id="about-title">
+                    Design, build, test.
+                </h2>
+
+                <p>
+                    It started with trains, cars, and LEGO. Joining my high
+                    school robotics team turned that curiosity into a love
+                    for designing and building.
+                </p>
+
+                <p>
+                    Now I’m studying mechanical engineering at Washington
+                    University in St. Louis, with minors in robotics and
+                    computer science. I’m happiest when I’m moving between
+                    CAD, the workbench, and a prototype that needs one more
+                    adjustment.
+                </p>
+
+                <p>
+                    Outside engineering, you’ll usually find me hiking,
+                    cooking, or dancing with WashU Bhangra.
+                </p>
+
+                <a class="text-link"
+                    href="about.html">
+                    More about my experience
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- contact -->
+        <section class="contact-section" id="contact"
+            aria-labelledby="contact-title">
+            <div class="container contact-inner">
+                <p class="eyebrow">03 / Contact</p>
+
+                <h2 id="contact-title">
+                    Get in touch
+                </h2>
+
+                <p>
+                    I’d love to talk engineering, exchange ideas,
+                    or hear about what you’re building.
+                </p>
+
+                <a class="contact-link" href="mailto:g.kailash@wustl.edu">
+                    g.kailash@wustl.edu
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="container site-footer">
+        <p>
+            © <span id="year">2026</span> Kailash Gupta-Verma
+        </p>
+
+        <div class="footer-links">
+            <a href="https://github.com/kailashguptaverma">
+                GitHub ↗
+            </a>
+
+            <a href="https://www.linkedin.com/in/kailash-gupta-verma-360150200/">
+                LinkedIn ↗
+            </a>
+
+            <a href="#main">Back to top ↑</a>
+        </div>
+    </footer>
+</body>
+</html>

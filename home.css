@@ -1,0 +1,39 @@
+/* Homepage refinement; shared project styles stay in style.css. */
+.homepage .hero { grid-template-columns: 1.35fr 1fr; gap: 40px 80px; padding-top: clamp(40px,7svh,90px); }
+.homepage h1 { font-size: clamp(48px,6.5vw,88px); font-weight: 400; line-height: 1.02; letter-spacing: -.055em; }
+.homepage .hero-description { max-width: 510px; font-size: 17px; line-height: 1.85; margin-top: 30px; }
+.homepage .hero-photo { transform: none; padding: 0; border: 0; background: transparent; border-radius: 0; }
+.homepage .hero-photo img { aspect-ratio: 4/5; max-height: 56svh; border-radius: 2px; }
+.homepage .hero-photo figcaption { color: var(--muted); border-top: 1px solid var(--line); margin-top: 16px; padding-top: 15px; }
+.homepage .hero-visual { max-width: 360px; padding: 0; }
+.homepage .hero-actions .button { border-radius: 2px; padding: 15px 20px; }
+.homepage .hero-bottom { font-family: inherit; letter-spacing: .02em; }
+.homepage #work { scroll-margin-top: 0; padding-top: 28px; padding-bottom: 60px; }
+.homepage #work .section-heading { margin-bottom: 22px; align-items: center; }
+.homepage #work .section-heading h2 { font-size: clamp(30px,3.5vw,46px); letter-spacing: -.04em; }
+.homepage #work .section-heading .eyebrow { margin-bottom: 10px; }
+.homepage .carousel-controls { margin-bottom: 16px; }
+.homepage .carousel-button { width: 42px; height: 42px; }
+.homepage .project-carousel.is-ready .project-image img,
+.homepage .project-carousel.is-ready .project-placeholder { height: var(--spotlight-height,40svh); min-height: 180px; aspect-ratio: auto; }
+.homepage .project-carousel.is-ready .project-info { padding-top: 20px; }
+.homepage .project-info h3 { font-size: 24px; }
+.homepage .project-info p:last-child { margin-bottom: 0; line-height: 1.65; }
+.homepage .project-directory { margin-top: 42px; }
+.homepage .about-copy em { font-family: inherit; font-style: normal; }
+.homepage .contact-inner h2 { font-size: clamp(38px,5vw,64px); }
+@media(max-width:800px) {
+ .homepage .hero { gap: 35px; }
+ .homepage .project-carousel.is-ready .project-info { display: block; }
+ .homepage .project-carousel.is-ready .tags { justify-content: flex-start; max-width: none; }
+}
+@media(max-width:640px) {
+ .homepage .hero { grid-template-columns: 1fr; padding-top: 40px; }
+ .homepage h1 { font-size: clamp(46px,12vw,68px); }
+ .homepage .hero-description { font-size: 16px; }
+ .homepage .hero-visual { max-width: 300px; }
+ .homepage .hero-photo img { max-height: none; }
+ .homepage #work .section-heading { display: block; }
+ .homepage #work .section-heading > p { margin-top: 14px; }
+ .homepage .project-carousel.is-ready .project-image img { height: clamp(200px,32svh,340px); }
+}
