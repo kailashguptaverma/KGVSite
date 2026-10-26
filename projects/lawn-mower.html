@@ -1,46 +1,68 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Mechanical engineering at Fulfil Solutions by Kailash Gupta-Verma."><meta name="theme-color" content="#f7f5f0"><title>Fulfil | Kailash Gupta-Verma</title><link rel="stylesheet" href="../style.css"><script src="../script.js" defer></script><script src="../project.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header">
-        <div class="container header-inner">
-            <a class="logo" href="./"
-                aria-label="Kailash Gupta-Verma home">
-                kgv<span>.</span>
-            </a>
-
-            <button class="menu-toggle"
-                type="button"
-                aria-expanded="false"
-                aria-controls="navigation"
-                hidden>
-                Menu
-            </button>
-
-            <nav id="navigation" aria-label="Main navigation">
-                <a href="../index.html#work">Work</a>
-                <a href="../index.html#about">About</a>
-                <a href="../index.html#contact">
-                    Get in touch <span aria-hidden="true">↗</span>
-                </a>
-            </nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Evaluating a conventional mower conversion through drive sizing, sensor selection, and navigation architecture.">
+    <meta name="theme-color" content="#f7f5f0">
+    <title>Autonomous Lawn Mower | Kailash Gupta-Verma</title>
+    <link rel="stylesheet" href="../project-pages.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+<div class="wrap header-inner">
+        <a class="logo" href="../index.html" aria-label="Kailash Gupta-Verma home">kgv<span>.</span></a>
+        <nav aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="mailto:g.kailash@wustl.edu">Contact ↗</a></nav>
+    </div></header>
+    <main id="main" class="wrap">
+        <header class="project-intro">
+            <a class="back-link" href="../index.html#work">← All projects</a>
+            <p class="eyebrow">Independent project · Mobile robotics</p>
+            <h1>Autonomous Lawn Mower</h1>
+            <p class="lead">Evaluating a conventional mower conversion through drive sizing, sensor selection, and navigation architecture.</p>
+        </header>
+        <dl class="project-facts">
+<div><dt>Role</dt><dd>System architecture &amp; feasibility</dd>
+</div>
+<div><dt>Context / status</dt><dd>Feasibility study</dd>
+</div>
+<div><dt>Tools &amp; methods</dt><dd>Mobile robotics · System design · Navigation</dd>
+</div></dl>
+        <div class="project-media">
+<figure><img src="../images/lawn-mower.jpeg" alt="Autonomous lawn mower project"><figcaption>The platform for my autonomous lawn mower project.</figcaption>
+</figure>
+</div>
+        <div class="project-layout">
+            <aside class="sidebar"><nav aria-label="On this page"><a href="#overview">01 / Overview</a><a href="#contribution">02 / My contribution</a><a href="#process">03 / Design & development</a><a href="#results">04 / Results & next steps</a></nav></aside>
+            <div class="project-story">
+<section id="overview" class="project-section">
+<p class="section-number">01</p>
+<h2>Overview</h2>
+<p>This independent feasibility study explores converting a conventional LawnMaster mower into an autonomous mobile platform. The proposed system combines powered wheel drive, outdoor localization, obstacle detection, and navigation. The work focuses on understanding the mechanical and system requirements before committing to a complete build.</p>
+</section>
+<section id="contribution" class="project-section">
+<p class="section-number">02</p>
+<h2>My contribution</h2>
+<p>I investigated the platform&#x27;s mass, wheel size, and drive requirements and compared approaches for computing, sensing, and navigation. I explored how a Raspberry Pi or Jetson could handle higher-level navigation while a microcontroller manages lower-level hardware. My work also considered emergency stopping and how the added systems would fit around the existing mower.</p>
+</section>
+<section id="process" class="project-section">
+<p class="section-number">03</p>
+<h2>Design & development</h2>
+<p>The study began with estimates of wheel torque and the loads involved in moving the mower. I then explored an architecture using ROS 2 and Nav2, with RTK GPS, an IMU, and wheel encoders for localization. Depth cameras and 2D LiDAR were considered for obstacle detection. These components remain proposed options rather than a fully installed or validated system.</p>
+</section>
+<section id="results" class="project-section">
+<p class="section-number">04</p>
+<h2>Results & next steps</h2>
+<p>Completed an initial requirements study and candidate system architecture. Drive sizing, localization, obstacle sensing, and stopping behavior were identified as the main integration questions.</p>
+<p>The proposed sensors and navigation stack have not been validated on a complete mower. The next step is a controlled drive-system prototype and sensor evaluation.</p>
+</section>
+</div>
         </div>
-    </header>
-<main id="main" class="container project-page"><a class="text-link" href="../index.html#work">← All projects</a><header class="project-intro"><p class="eyebrow" id="project-category">Industry experience / Fulfil Solutions</p><h1 id="project-title">Mechanical Engineering at Fulfil</h1><p class="project-lead" id="project-summary"></p><div class="tags" id="project-tags"></div></header><figure class="project-cover" id="project-cover" hidden><img id="project-photo" alt=""><figcaption id="project-caption"></figcaption></figure><div class="project-detail-layout"><aside class="project-sidebar" aria-label="Project information"><p class="eyebrow">At a glance</p><dl id="project-facts"></dl><nav class="project-contents" aria-label="On this page"><a href="#overview">Overview</a><a href="#contribution">My contribution</a><a href="#process">Design & development</a><a href="#learning">Results & reflection</a></nav></aside><div class="project-body"><section id="overview"><p class="eyebrow">01 / The context</p><h2>Overview</h2><div id="overview-text" class="project-rich-content"></div></section>
-<section id="contribution"><p class="eyebrow">02 / My role</p><h2>My contribution</h2><div id="contribution-text" class="project-rich-content"></div></section>
-<section id="process"><p class="eyebrow">03 / From idea to implementation</p><h2>Design & development</h2><div id="process-text" class="project-rich-content"></div></section>
-<section id="learning"><p class="eyebrow">04 / Looking back</p><h2>Results & reflection</h2><div id="learning-text" class="project-rich-content"></div></section>
-</div></div><noscript><p>Enable JavaScript to load this project's description.</p></noscript><div class="project-end"><h2>Explore another project.</h2><a class="button" href="../index.html#work">Back to my work ↗</a></div></main><footer class="container site-footer">
-        <p>
-            © <span id="year">2026</span> Kailash Gupta-Verma
-        </p>
-
-        <div class="footer-links">
-            <a href="https://github.com/kailashguptaverma">
-                GitHub ↗
-            </a>
-
-            <a href="https://www.linkedin.com/in/kailash-gupta-verma-360150200/">
-                LinkedIn ↗
-            </a>
-
-            <a href="#main">Back to top ↑</a>
-        </div>
-    </footer></body></html>
+        <div class="project-end"><a href="../index.html#work">← Back to all projects</a><a href="../about.html">About & experience ↗</a>
+</div>
+    </main>
+    <footer class="wrap footer">
+<p>© 2026 Kailash Gupta-Verma</p><a href="https://github.com/kailashguptaverma">GitHub ↗</a><a href="#main">Back to top ↑</a></footer>
+</body>
+</html>
