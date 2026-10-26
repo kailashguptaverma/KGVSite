@@ -36,7 +36,7 @@ document.addEventListener("keydown", (event) => {
     if (
         event.key === "Escape" &&
         mobileScreen.matches &&
-        menuButton.getAttribute("aria-expanded") === "true"
+        menuButton?.getAttribute("aria-expanded") === "true"
     ) {
         closeMenu();
         menuButton.focus();
@@ -56,6 +56,8 @@ if (projectCarousel) {
     const nextButton = document.getElementById("next-project");
     const projectStatus = document.getElementById("project-status");
 
+    const workTitle = document.getElementById("work-title");
+    const workIntro = document.getElementById("work-intro");
     let activeProject = 0;
 
     function showProject(index) {
@@ -70,6 +72,21 @@ if (projectCarousel) {
         const title = projectCards[activeProject]
             .querySelector("h3")
             .textContent.trim();
+
+        const card = projectCards[activeProject];
+        if (workTitle) workTitle.textContent = card.dataset.heading || title;
+        if (workIntro && card.dataset.intro) workIntro.textContent = card.dataset.intro;
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            [workTitle, workIntro].forEach(element => {
+                if (!element?.animate) return;
+                element.getAnimations().forEach(animation => animation.cancel());
+                element.animate(
+                    [{ opacity: 0, transform: "translateY(5px)" }, { opacity: 1, transform: "translateY(0)" }],
+                    { duration: 220, easing: "ease-out" }
+                );
+            });
+        }
+        projectCarousel.dispatchEvent(new Event("projectchange"));
 
         projectStatus.textContent =
             `${activeProject + 1} / ${projectCards.length} — ${title}`;
@@ -149,6 +166,7 @@ if (work && projectCarousel) {
     }
     sizeSpotlight();
     window.addEventListener("resize", sizeSpotlight);
+    projectCarousel.addEventListener("projectchange", sizeSpotlight);
     window.addEventListener("load", landOnWork, { once: true });
     window.addEventListener("hashchange", landOnWork);
     document.querySelectorAll('a[href="#work"], a[href="#projects"]').forEach(link => {
