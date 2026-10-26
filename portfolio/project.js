@@ -23,65 +23,26 @@ const projects = {
         "learning": "The platform has been brought back up and its architecture reviewed, but the balloon leak and sensor troubleshooting remain important steps before the next round of tissue testing. This work has taught me how to take over an existing research system, trace problems across hardware and software, and prioritize improvements that make experiments more repeatable. It has also shown me why documentation and maintenance access matter in a research prototype."
     },
     "fulfil": {
-        "title": "Mechanical Engineering at Fulfil",
-        "category": "Industry experience / Fulfil Solutions",
-        "summary": "Developing compliant bag-retention mechanisms and tote-positioning concepts for automated grocery fulfillment.",
-        "tags": [
-            "SolidWorks",
-            "Mechanism design",
-            "Tolerance analysis",
-            "Prototyping",
-            "Design for manufacturing"
-        ],
-        "image": "fulfil.jpg",
-        "imageAlt": "Automated grocery fulfillment equipment at Fulfil Solutions",
-        "caption": "My summer 2025 mechanical engineering internship at Fulfil Solutions.",
-        "facts": {
-            "Organization": "Fulfil Solutions",
-            "Role": "Mechanical Engineering Intern",
-            "Dates": "May–August 2025",
-            "Focus": "Compliant mechanisms and automation hardware"
-        },
-        "overview": "During my mechanical engineering internship at Fulfil Solutions, I worked on hardware for automated grocery fulfillment. My main project focused on improving the clips that hold paper bags inside totes. The mechanism needed to maintain bag tension without tearing the paper, accommodate variation in the bags and surrounding hardware, and fit within existing automation. I also developed concepts for a tote stopper intended to improve positioning repeatability along the conveyor system.",
-        "contribution": "I developed and compared compliant clip mechanisms, created CAD models and prototypes, and built calculations to connect spring behavior with the assembly's tolerance stackup. My work included spring selection, force and bending-stress calculations, clip and cover design, and prototype evaluation. I documented the tradeoffs between the leading concepts and prepared a technical handoff with remaining development steps. For the tote-stopper project, I led the mechanical concept work, explored linkage arrangements and actuator options, and coordinated with teammates on electrical requirements and test planning.",
-        "process": [
-            {
-                "type": "text",
-                "text": "For the clip project, I investigated how bag variation and accumulated assembly tolerances affected the travel and force the mechanism needed to provide. I explored torsion, compression, and leaf-spring approaches before developing flat-spring and conical-spring prototypes."
-            },
-            {
-                "type": "image",
-                "src": "fulfil-flat-spring.png",
-                "alt": "CAD view of the flat-spring clip prototype",
-                "caption": "Flat-spring prototype: exploring compliance within the available packaging space."
-            },
-            {
-                "type": "text",
-                "text": "Testing exposed issues that calculations alone did not capture, including insufficient bag tension, sharp contact points, spring retention, and interference with nearby equipment."
-            },
-            {
-                "type": "image",
-                "src": "fulfil-prototype-test.png",
-                "alt": "Physical clip prototype being tested on the tote hardware",
-                "caption": "Physical prototype testing helped evaluate the clip in the surrounding hardware."
-            },
-            {
-                "type": "text",
-                "text": "I revised the geometry and spring selection while considering machining, molding, assembly, and cost."
-            },
-            {
-                "type": "image",
-                "src": "fulfil-conical-spring.png",
-                "alt": "CAD view of the conical-spring clip design",
-                "caption": "Conical-spring design: an alternative approach evaluated for spring behavior, retention, and packaging."
-            },
-            {
-                "type": "text",
-                "text": "For the tote stopper, I compared linear and rotary concepts, considered how stopping loads would pass through the mechanism, and examined packaging, tote alignment, and behavior when power was removed."
-            }
-        ],
-        "learning": "By the end of the internship, I had developed and compared two clip-design paths and documented their prototype behavior, packaging limitations, and manufacturing considerations. The conical-spring prototype provided promising bag tension without tearing during the reported tests, while the flat-spring approach offered packaging advantages but needed further refinement. Final selection, additional system testing, and production-readiness work remained at handoff. The experience taught me to use calculations to guide prototypes and physical testing to challenge the assumptions behind them. I also learned that a useful engineering handoff needs to explain what was tested, what remains uncertain, and what the next person should do."
+    "title": "Fulfil Solutions",
+    "category": "Industry experience / Fulfil Solutions",
+    "summary": "Mechanical design and analysis for automated grocery fulfillment, with a focus on compliance, tolerance variation, and reliable material handling.",
+    "tags": [
+        "SolidWorks",
+        "Mechanism design",
+        "Tolerance analysis",
+        "Prototyping",
+        "Design for manufacturing"
+    ],
+    "facts": {
+        "Organization": "Fulfil Solutions",
+        "Role": "Mechanical Engineering Intern",
+        "Dates": "May–August 2025"
     },
+    "overview": "Much of my work is confidential, so I cannot share specific designs, prototype photos, calculations, or internal results. Fulfil builds automation for online grocery fulfillment. My internship focused on mechanical analysis and hardware supporting bag handling and tote positioning.",
+    "contribution": "I developed CAD models, compared concepts, built calculation tools, evaluated prototypes, and prepared a technical handoff. My work included spring sizing, force and bending-stress analysis, tolerance stackups, and coordination on electrical requirements and test planning.",
+    "process": "I connected dimensional variation to required motion and spring response, evaluated material stress and packaging, and used prototype behavior to guide revisions. Manufacturing, assembly, sourcing, and cost were part of the comparison.",
+    "learning": "Delivered concept comparisons, CAD, calculation work, prototype evaluations, and handoff documentation. Further system testing and production-readiness work remained open."
+},
     "rover-claw": {
         "title": "Mars Rover End Effector",
         "category": "Robotics / WashU Robotics",
