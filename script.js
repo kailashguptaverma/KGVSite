@@ -1,5 +1,6 @@
 // Keep the copyright year current.
-document.getElementById("year").textContent = new Date().getFullYear();
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
 
 // The navigation stays visible if JavaScript is unavailable.
 const menuButton = document.querySelector(".menu-toggle");
@@ -7,23 +8,25 @@ const navigation = document.getElementById("navigation");
 const mobileScreen = window.matchMedia("(max-width: 640px)");
 
 function closeMenu() {
+    if (!menuButton || !navigation) return;
     menuButton.setAttribute("aria-expanded", "false");
     navigation.hidden = mobileScreen.matches;
 }
 
 function updateNavigation() {
+    if (!menuButton || !navigation) return;
     menuButton.hidden = !mobileScreen.matches;
     closeMenu();
 }
 
-menuButton.addEventListener("click", () => {
-    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+menuButton?.addEventListener("click", () => {
+    const isOpen = menuButton?.getAttribute("aria-expanded") === "true";
 
     menuButton.setAttribute("aria-expanded", String(!isOpen));
     navigation.hidden = isOpen;
 });
 
-navigation.addEventListener("click", (event) => {
+navigation?.addEventListener("click", (event) => {
     if (event.target.closest("a") && mobileScreen.matches) {
         closeMenu();
     }
@@ -112,3 +115,44 @@ if (projectCarousel) {
 
 mobileScreen.addEventListener("change", updateNavigation);
 updateNavigation();
+ 
+// Fit the full spotlight (heading, controls, image, and copy) below the header.
+const work = document.getElementById("work");
+if (work && projectCarousel) {
+    const header = document.querySelector(".site-header");
+    function sizeSpotlight() {
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        document.documentElement.style.setProperty("--header-height", headerHeight + "px");
+        if (window.innerWidth <= 640) return;
+        const heading = work.querySelector(".section-heading");
+        const controls = work.querySelector(".carousel-controls");
+        let copyHeight = 0;
+        // Measure every slide so advancing never hides a longer caption.
+        projectCarousel.querySelectorAll(".project-card").forEach(card => {
+            const wasHidden = card.hidden;
+            card.hidden = false;
+            copyHeight = Math.max(copyHeight, card.querySelector(".project-info").getBoundingClientRect().height);
+            card.hidden = wasHidden;
+        });
+        const available = window.innerHeight - headerHeight - 16 - 28
+            - heading.getBoundingClientRect().height - 22
+            - controls.getBoundingClientRect().height - 16 - copyHeight - 24;
+        work.style.setProperty("--spotlight-height", Math.max(180, Math.min(560, available)) + "px");
+    }
+    function landOnWork() {
+        if (!["#work", "#projects"].includes(window.location.hash)) return;
+        sizeSpotlight();
+        // Native anchors respect the measured sticky-header offset.
+        const top = work.getBoundingClientRect().top + window.scrollY
+            - (header ? header.getBoundingClientRect().height : 0) - 16;
+        window.scrollTo({ top, behavior: "instant" });
+    }
+    sizeSpotlight();
+    window.addEventListener("resize", sizeSpotlight);
+    window.addEventListener("load", landOnWork, { once: true });
+    window.addEventListener("hashchange", landOnWork);
+    document.querySelectorAll('a[href="#work"], a[href="#projects"]').forEach(link => {
+        link.addEventListener("click", () => requestAnimationFrame(landOnWork));
+    });
+    if (document.fonts) document.fonts.ready.then(sizeSpotlight);
+}
